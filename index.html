@@ -1,0 +1,96 @@
+<script>
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1) + min);       
+    }
+
+    function computerPlay() {
+        let answer = ["Rock", "Paper", "Scissors"];
+        let x = getRandomInt(0, 2);
+        return answer[x];
+    }
+
+    function playRound(playerSelection, computerSelection) {
+        switch(playerSelection) {
+            case "Rock":
+            switch(computerSelection) {
+                case "Rock":
+                    return "tie";
+                     break;
+                case "Scissors":
+                    return "Victory!";
+                     break;
+                case "Paper":
+                    return "Defeat!";
+                     break;
+                     }
+            case "Paper":
+            switch(computerSelection) {
+                case "Rock":
+                    return "Victory";
+                     break;
+                case "Scissors":
+                    return "Defeat!";
+                     break;
+                case "Paper":
+                    return "tie";
+                     break;
+                     }
+            case "Scissors":
+            switch(computerSelection) {
+                case "Rock":
+                    return "Defeat!";
+                     break;
+                case "Scissors":
+                    return "tie";
+                     break;
+                case "Paper":
+                    return "Victory!";
+                     break;
+                     }
+            }
+        }
+
+function game() {
+    console.log("Rock Paper Scissors!");
+    let playerRounds = 0;
+    let computerRounds = 0;
+    for (i = 1; i <= 5; ++i) {
+        let userInput = prompt("Choose wisely:" );
+        let computerInput = computerPlay();
+        const x = (playRound(userInput, computerInput));
+        console.log(x);
+        switch(x) {
+            case "Victory!":
+                ++playerRounds;
+                console.log(`${playerRounds} - ${computerRounds}`);
+                break;
+            case "tie":
+                console.log(`${playerRounds} - ${computerRounds}`);
+                break;
+            case "Defeat!":
+                ++computerRounds;
+                console.log(`${playerRounds} - ${computerRounds}`);
+                break;
+        }
+
+    }
+    if (playerRounds > computerRounds) {
+        console.log("You win!");
+    }
+    else if (playerRounds < computerRounds) {
+        console.log("You lose!");
+    }
+    else if (playerRounds == computerRounds) {
+        console.log("Tie!");s
+    }
+    else {
+        console.log("error");
+    }
+    return 1;
+}
+
+
+    console.log(game());
+</script>
